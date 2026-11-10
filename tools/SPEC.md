@@ -151,7 +151,7 @@ The file stores no colour value. A move's display colour comes from two stored f
 | `0x00` or other | any | no colour |
 
 How this was established. In Hiarcs 15 the `recommendation` byte only takes the values `0x80` and `0x40`. ChessBase nevertheless shows three colours. Checked by eye in ChessBase:
-- every `!?` move with `0x80` is blue (for example 1.e3, 1.g3, 1.b3 and 1.f4 in the initial position);
+- every `!?` move with `0x80` is blue;
 - a `?` move with `0x80` is blue;
 - `!` moves and moves with no NAG are green;
 - every `0x40` move is red.
