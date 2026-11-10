@@ -1,0 +1,25 @@
+This repository is licensed per component. Each source file carries an
+SPDX-License-Identifier header. The full licence texts are in LICENSES/.
+
+CC0-1.0 (LICENSES/CC0-1.0.txt)
+  tools/SPEC.md            OpenBook Rich format specification
+  results/*.json           aggregated analysis figures
+
+MIT (LICENSES/MIT.txt)
+  tools/obr.py             reference reader
+  tools/obr_tobin.py       .obr -> Polyglot .bin export
+  tools/build_obr.py       .obr builder
+  tools/ctgscan.py         CTG page scanner
+
+GPL-3.0-or-later (LICENSES/GPL-3.0-or-later.txt)
+  tools/ctg_movetable.py   move table derived from jja 0.9.1 (Ali Polatel)
+  tools/ctglib.py          CTG codec, index lookup, move decoding
+  tools/ctgwalk.py         CTG tree walk
+  tools/gen_aliases.py     alias generation
+  tools/test_codec.py      codec checks
+  tools/test_flip.py       mirroring-rule checks
+
+The GPL files are the ones that import ctg_movetable.py, directly or through
+ctglib.py. The MIT and CC0 files do not import any GPL file.
+
+Copyright 2026 TBergh98, except where a file header names other holders.
