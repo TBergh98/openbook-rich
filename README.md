@@ -33,7 +33,7 @@ BrainLearn experience files (`.exp`) store a key, depth, score, move and perform
 
 ## How the converter was built
 
-The CTG format was studied by reverse engineering, using Claude with the [REA: Reverse Engineer Anything](https://github.com/morluto/rea) skill (`reverse-engineer-anything`, by morluto). The public starting points were Steinar H. Gunderson's [CTG specification](https://web.archive.org/web/20210129162445/https://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=2319) and the source code of jja, used as a reference.
+The CTG data format was studied by analysing book files, using Claude with the [REA: Reverse Engineer Anything](https://github.com/morluto/rea) skill (`reverse-engineer-anything`, by morluto). The public starting points were Steinar H. Gunderson's [CTG specification](https://web.archive.org/web/20210129162445/https://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=2319) and the source code of jja, used as a reference.
 
 The converter was checked on one commercial CTG book (figures in [`results/`](results/)):
 
@@ -123,6 +123,7 @@ The format can be implemented without any GPL code: a reader needs only the spec
 - ChessBase, CTG and HIARCS are trademarks of their respective owners. This project is not affiliated with or endorsed by them.
 - The CTG tools are provided for interoperability only: reading books you lawfully own with other software.
 - This repository contains no ChessBase code and no content from commercial books.
+- The CTG format was analysed from the public specification, the source code of jja, and the data files of a book the author lawfully owns. No ChessBase or other proprietary program was decompiled, disassembled or otherwise reverse engineered. ChessBase was used only as an end user, to compare displayed results visually.
 - You are responsible for having the rights to any book you convert, and for not distributing converted commercial books.
 - The software is provided without warranty, as stated in its licences.
 
