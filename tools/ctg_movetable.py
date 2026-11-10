@@ -1,4 +1,14 @@
-# Generated from jja 0.9.1 src/ctg.rs (GPL-3.0); origin: Steinar H. Gunderson's CTG spec.
+# SPDX-FileCopyrightText: 2023 Ali Polatel <alip@chesswob.org>
+# SPDX-FileCopyrightText: 2007 Steinar H. Gunderson <steinar+remoteglot@gunderson.no>
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# CTG move table, generated from src/ctg.rs of jja 0.9.1
+# (https://git.sr.ht/~alip/jja), Copyright (c) 2023 Ali Polatel, licensed
+# GPL-3.0-or-later. jja's CTG code is based in part upon remoteglot,
+# Copyright 2007 Steinar H. Gunderson, and on his published CTG specification:
+# https://web.archive.org/web/20210129162445/https://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=2319
+#
 # encoding -> (piece, nth occurrence, forward, right)
 MOVETABLE = {
     0x00: ('P', 5, 1, 1),

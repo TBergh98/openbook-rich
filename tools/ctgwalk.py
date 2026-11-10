@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Stage 3: walk the whole book tree from the initial position.
 
 For every CTG entry reachable by legal book moves it records the real

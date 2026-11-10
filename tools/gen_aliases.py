@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Stage 3b: alias keys.
 
 CTG normalises every position (side to move shown as White; boards without

@@ -1,3 +1,6 @@
+<!-- SPDX-FileCopyrightText: 2026 TBergh98 -->
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+
 # OpenBook Rich (`.obr`) — format specification, version 1
 
 *License: this specification is released under CC0 1.0 (public domain). The reference code `obr.py` is MIT.*

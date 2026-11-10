@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: MIT
 """Stage 4: build an OpenBook Rich (.obr) file from a CTG book + walk output.
 
 Usage: python build_obr.py <book.ctg> <walkdir> <out.obr>

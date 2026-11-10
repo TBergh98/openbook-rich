@@ -1,3 +1,16 @@
+# SPDX-FileCopyrightText: 2023 Ali Polatel <alip@chesswob.org>
+# SPDX-FileCopyrightText: 2007 Steinar H. Gunderson <steinar+remoteglot@gunderson.no>
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Uses the move table in ctg_movetable.py, generated from jja 0.9.1
+# (https://git.sr.ht/~alip/jja, Copyright (c) 2023 Ali Polatel,
+# GPL-3.0-or-later). The position encoding, the Huffman codes and the hash
+# table TBL2 follow Steinar H. Gunderson's CTG specification and remoteglot
+# (Copyright 2007 Steinar H. Gunderson), as implemented in jja src/ctg.rs and
+# src/ctgbook.rs, which were used as a reference.
+# CTG specification:
+# https://web.archive.org/web/20210129162445/https://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=2319
 """Core CTG primitives: position codec, index lookup, move decoding.
 
 Board representation ("byteboard"): a list of 64 one-char strings, index

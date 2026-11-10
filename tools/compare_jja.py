@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: MIT
 """Stage 5: measured comparison between jja's Polyglot output and the .obr file.
 
 Usage: python compare_jja.py <book.obr> <jja.bin> <obr_derived.bin> <out.json>

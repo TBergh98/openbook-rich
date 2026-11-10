@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Walk the book tree from the start position (bounded) and measure, for
 child positions WITHOUT castling rights, how many are found in the book with
 each flip rule. The rule that matches the book finds them; the wrong one doesn't."""

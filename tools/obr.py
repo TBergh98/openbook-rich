@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: MIT
 """OpenBook Rich (.obr) - reference reader and writer.
 
 Specification: SPEC.md (same folder). Licence: MIT.

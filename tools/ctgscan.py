@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: MIT
 """Stage 1: linear scan of every page of a CTG book.
 
 Parses the page/entry structure without interpreting positions, checks that

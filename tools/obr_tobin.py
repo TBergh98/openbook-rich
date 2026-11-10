@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: MIT
 """Derive a standard Polyglot .bin from an .obr file.
 
 Weight of a move = points scored by the side that played it in the book games

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 TBergh98
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Quick checks: position codec round-trip on the first pages, and index
 lookups from the initial position with both flip rules."""
 import sys
