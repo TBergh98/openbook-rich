@@ -1,0 +1,31 @@
+nodes 32330141 moves 32808816 aliases 12496
+stats 2000000/32330141, exceptions 0
+stats 4000000/32330141, exceptions 0
+stats 6000000/32330141, exceptions 0
+stats 8000000/32330141, exceptions 0
+stats 10000000/32330141, exceptions 0
+stats 12000000/32330141, exceptions 0
+stats 14000000/32330141, exceptions 0
+stats 16000000/32330141, exceptions 0
+stats 18000000/32330141, exceptions 0
+stats 20000000/32330141, exceptions 0
+stats 22000000/32330141, exceptions 0
+stats 24000000/32330141, exceptions 0
+stats 26000000/32330141, exceptions 0
+stats 28000000/32330141, exceptions 0
+stats 30000000/32330141, exceptions 0
+stats 32000000/32330141, exceptions 0
+stats 32330141/32330141, exceptions 0
+{
+ "positions": 32330141,
+ "moves": 32808816,
+ "aliases": 85531229,
+ "alias_key_clashes_dropped": 0,
+ "walk_aliases": 11279,
+ "walk_aliases_covered": 11279,
+ "exceptions": 0,
+ "unreached": 31,
+ "unplayable_moves": 1,
+ "ctg_entries": 32330172,
+ "bytes": 2840696215
+}

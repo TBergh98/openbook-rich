@@ -1,0 +1,11 @@
+{
+ "nodes": 32330141,
+ "moves": 32808816,
+ "undecodable": 0,
+ "illegal": 1,
+ "child_missing": 3,
+ "aliases": 12496,
+ "max_depth": 127,
+ "transpositions": 466176,
+ "seconds": 4906
+}

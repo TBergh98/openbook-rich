@@ -1,0 +1,20 @@
+{
+ "ctg_entries_as_obr_positions": 32330141,
+ "obr_moves": 32808816,
+ "obr_aliases": 85531229,
+ "jja_entries": 55416231,
+ "jja_positions": 51972722,
+ "obr_bin_entries": 118490110,
+ "obr_bin_positions": 112120602,
+ "positions_missing_in_jja": 60147886,
+ "positions_missing_in_jja_pct": 53.646,
+ "jja_positions_not_in_obr": 6,
+ "moves_missing_in_jja": 63073895,
+ "moves_missing_in_jja_pct": 53.231,
+ "jja_moves_not_in_obr": 16,
+ "weight_corr_with_mover_points": -0.0014,
+ "weight_corr_with_opponent_points": -0.0015,
+ "red_moves_canonical": 918848,
+ "red_moves_kept_by_jja": 787958,
+ "moves_with_ge20_games": 312523
+}

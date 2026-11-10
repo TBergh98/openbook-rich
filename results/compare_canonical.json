@@ -1,0 +1,9 @@
+{
+ "canonical_with_moves": 30872762,
+ "canonical_missing_in_jja": 3936374,
+ "pct": 12.75,
+ "missing_that_are_mirrored_entries": 2080097,
+ "mirrored_entries_total": 2080097,
+ "games_in_missing_positions_max": 15037,
+ "missing_with_ge10_games": 41304
+}
