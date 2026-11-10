@@ -5,3 +5,5 @@
 *.obr
 *.bin
 
+out/
+*.ini
