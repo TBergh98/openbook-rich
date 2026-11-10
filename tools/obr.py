@@ -24,7 +24,17 @@ ALIAS = struct.Struct("<QI")                         # 12 bytes
 NO_CHILD = 0xFFFFFFFF
 
 NAG_NAMES = {0: "", 1: "!", 2: "?", 3: "!!", 4: "??", 5: "!?", 6: "?!", 7: "forced", 8: "only"}
-REC_NAMES = {0x00: "none", 0x40: "red", 0x80: "green", 0xA4: "green+"}
+REC_NAMES = {0x00: "none", 0x40: "avoid", 0x80: "normal", 0xA4: "normal+"}
+
+
+def move_colour(recommendation, nag):
+    """Display colour of a move (SPEC section 9): from the child's
+    recommendation byte and the move's NAG, as ChessBase shows it."""
+    if recommendation == 0x40:
+        return "red"
+    if recommendation in (0x80, 0xA4):
+        return "blue" if nag in (2, 4, 5, 6, 9) else "green"
+    return "none"
 
 
 class Position(tuple):
@@ -196,7 +206,7 @@ def cli():
                 if c:
                     sc = mover_score(c, board.turn == chess.BLACK)
                     print(f"{san:8} {NAG_NAMES.get(m['nag'], m['nag']):3} flags=0x{m['annotation_flags']:02x} "
-                          f"{REC_NAMES.get(c['recommendation'], hex(c['recommendation'])):6} "
+                          f"{move_colour(c['recommendation'], m['nag']):6} "
                           f"games={c['games']:<8} +{c['white_wins']} ={c['draws']} -{c['black_wins']} "
                           f"score={sc:.3f} elo={c['avg_rating']} perf={c['performance']}")
                 else:
