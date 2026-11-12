@@ -39,19 +39,22 @@ The converter was checked on one commercial CTG book (figures in [`results/`](re
 
 | | |
 |---|---|
-| CTG entries | 32,330,172 |
-| Pages whose used length matches the parsed entries | 561,556 of 561,556 |
-| Entries reached from the initial position | 32,330,141 |
+| CTG entries | about 32 million |
+| Pages whose used length matches the parsed entries | all (about 560,000) |
 | Unreachable entries, stored verbatim | 31 |
-| Moves | 32,808,816 |
+| Moves | about 33 million |
 | Undecodable moves | 0 |
 | Illegal moves (kept in metadata) | 1 |
-| Aliases | 85,531,229 |
+| Aliases | about 85 million |
 | Entries breaking a derivation rule | 0 |
+
+Counts, file size and run times depend on the book and the hardware; the figures here are orders of magnitude for that one book on a laptop.
 
 ## Quick start
 
-Use the C++ converter. On the book above it takes about 4 minutes; the Python pipeline takes about 97 minutes and gives the same output.
+Converting a book needs only a C++ compiler. Python is needed only to inspect the result, export it to Polyglot, or run the reference pipeline.
+
+Use the C++ converter: on the book above it took a few minutes, against more than an hour for the Python pipeline, with the same output.
 
 ### Convert a CTG book (C++, recommended)
 
@@ -62,7 +65,7 @@ g++ -O2 -std=c++17 -o ctg2obr tools/ctg2obr.cpp
 ./ctg2obr book.ctg book.obr
 ```
 
-The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file with the same name is read if present. The output is identical to the Python pipeline except for the metadata fields `generator` and `created`. On the book above the `.obr` file is 2.8 GB.
+The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file with the same name is read if present. The output is identical to the Python pipeline except for the metadata fields `generator` and `created`. For a book of about 30 million positions the `.obr` file is a few GB.
 
 ### Inspect and export
 
@@ -83,7 +86,7 @@ The weight of each move is the score of the side that played it. `--no-red` leav
 
 ### Python reference pipeline (slow)
 
-The Python tools are the reference implementation the C++ converter was checked against. Use them only to verify a conversion or to study the format: on the book above they take about 97 minutes, 80 of them for the tree walk.
+The Python tools are the reference implementation the C++ converter was checked against. Use them only to verify a conversion or to study the format: they are many times slower (more than an hour on the book above, mostly in the tree walk).
 
 Requirements: Python 3, python-chess and NumPy (`pip install chess numpy`).
 
