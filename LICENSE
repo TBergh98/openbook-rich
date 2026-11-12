@@ -10,6 +10,7 @@ MIT (LICENSES/MIT.txt)
   tools/obr_tobin.py       .obr -> Polyglot .bin export
   tools/build_obr.py       .obr builder
   tools/ctgscan.py         CTG page scanner
+  tools/compare_obr.py     .obr comparison (C++ vs Python check)
 
 GPL-3.0-or-later (LICENSES/GPL-3.0-or-later.txt)
   tools/ctg_movetable.py   move table derived from jja 0.9.1 (Ali Polatel)
@@ -18,8 +19,10 @@ GPL-3.0-or-later (LICENSES/GPL-3.0-or-later.txt)
   tools/gen_aliases.py     alias generation
   tools/test_codec.py      codec checks
   tools/test_flip.py       mirroring-rule checks
+  tools/ctg2obr.cpp        C++ CTG -> .obr converter (contains the jja move table)
 
 The GPL files are the ones that import ctg_movetable.py, directly or through
-ctglib.py. The MIT and CC0 files do not import any GPL file.
+ctglib.py, and ctg2obr.cpp, which contains the same table. The MIT and CC0
+files do not import any GPL file.
 
 Copyright 2026 TBergh98, except where a file header names other holders.

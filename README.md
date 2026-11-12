@@ -85,6 +85,16 @@ Optional checks: `tools/ctgscan.py book.ctg [max_pages]` parses every page and p
 
 On the book above, the tree walk took about 80 minutes and the `.obr` file is 2.8 GB.
 
+### C++ converter
+
+[`tools/ctg2obr.cpp`](tools/ctg2obr.cpp) does the three steps above in one program, with no dependencies beyond a C++17 compiler. Its output is identical to the Python pipeline except for the metadata fields `generator` and `created`. On the book above it takes about 4 minutes, against about 97 minutes for the three Python steps.
+
+```
+g++ -O2 -std=c++17 -o ctg2obr tools/ctg2obr.cpp
+./ctg2obr book.ctg book.obr
+python tools/compare_obr.py book.obr out/book.obr   # check against the Python output
+```
+
 ## Programmatic use
 
 `ObrBook` needs only the standard library. python-chess is used here only to compute the Polyglot key. Run from `tools/` or add it to `sys.path`.
@@ -113,8 +123,8 @@ Castling moves use the Polyglot king-takes-rook encoding (for example `e1h1`). A
 The repository is licensed per component. See [`LICENSE`](LICENSE) for the file list and [`LICENSES/`](LICENSES/) for the full texts.
 
 - `tools/SPEC.md` and `results/`: CC0-1.0.
-- `tools/obr.py`, `tools/obr_tobin.py`, `tools/build_obr.py`, `tools/ctgscan.py`: MIT.
-- `tools/ctg_movetable.py`, `tools/ctglib.py`, `tools/ctgwalk.py`, `tools/gen_aliases.py`, `tools/test_codec.py`, `tools/test_flip.py`: GPL-3.0-or-later. The move table in `ctg_movetable.py` is derived from jja, which is GPL-3.0-or-later; the other files import it.
+- `tools/obr.py`, `tools/obr_tobin.py`, `tools/build_obr.py`, `tools/ctgscan.py`, `tools/compare_obr.py`: MIT.
+- `tools/ctg_movetable.py`, `tools/ctglib.py`, `tools/ctgwalk.py`, `tools/gen_aliases.py`, `tools/test_codec.py`, `tools/test_flip.py`, `tools/ctg2obr.cpp`: GPL-3.0-or-later. The move table in `ctg_movetable.py` is derived from jja, which is GPL-3.0-or-later; the other files import it, and `ctg2obr.cpp` contains it.
 
 The format can be implemented without any GPL code: a reader needs only the specification.
 
