@@ -1,6 +1,6 @@
 # OpenBook Rich
 
-OpenBook Rich (`.obr`) is an open, documented file format for chess opening books. It stores game statistics, ratings, annotations and recommendations for each position and move. This repository contains the format specification, a reference reader, an exporter to Polyglot `.bin`, and tools that convert ChessBase CTG books to `.obr`.
+OpenBook Rich (`.obr`) is an open, documented file format for chess opening books. It stores game statistics, ratings, annotations and recommendations for each position and move. This repository contains the format specification, a reference reader, an exporter to Polyglot `.bin`, and tools that convert ChessBase CTG books to `.obr`: a fast C++ converter and a Python reference implementation.
 
 ## Why it exists
 
@@ -51,49 +51,51 @@ The converter was checked on one commercial CTG book (figures in [`results/`](re
 
 ## Quick start
 
-Requirements: Python 3, [python-chess](https://github.com/niklasf/python-chess) and NumPy.
+Use the C++ converter. On the book above it takes about 4 minutes; the Python pipeline takes about 97 minutes and gives the same output.
+
+### Convert a CTG book (C++, recommended)
+
+[`tools/ctg2obr.cpp`](tools/ctg2obr.cpp) needs only a C++17 compiler (GCC, Clang, or MinGW on Windows).
 
 ```
-pip install chess numpy
+g++ -O2 -std=c++17 -o ctg2obr tools/ctg2obr.cpp
+./ctg2obr book.ctg book.obr
 ```
 
-The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file with the same name is read if present.
+The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file with the same name is read if present. The output is identical to the Python pipeline except for the metadata fields `generator` and `created`. On the book above the `.obr` file is 2.8 GB.
+
+### Inspect and export
+
+These tools need Python 3. `probe` also needs [python-chess](https://github.com/niklasf/python-chess) (`pip install chess`).
+
+```
+python tools/obr.py info  book.obr
+python tools/obr.py probe book.obr "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1"
+```
+
+To export a Polyglot book:
+
+```
+python tools/obr_tobin.py book.obr book.bin [--no-red] [--min-games N]
+```
+
+The weight of each move is the score of the side that played it. `--no-red` leaves out moves marked "avoid". `--min-games N` leaves out moves with fewer than N games.
+
+### Python reference pipeline (slow)
+
+The Python tools are the reference implementation the C++ converter was checked against. Use them only to verify a conversion or to study the format: on the book above they take about 97 minutes, 80 of them for the tree walk.
+
+Requirements: Python 3, python-chess and NumPy (`pip install chess numpy`).
 
 ```
 mkdir out
 python tools/ctgwalk.py book.ctg out                 # walk the book tree: nodes.bin, moves.bin, aliases.bin
 python tools/gen_aliases.py book.ctg out [workers]   # alias keys: aliases_full.bin
 python tools/build_obr.py book.ctg out out/book.obr  # write the .obr file
+python tools/compare_obr.py book.obr out/book.obr    # check the C++ output against it
 ```
-
-Inspect the result:
-
-```
-python tools/obr.py info  out/book.obr
-python tools/obr.py probe out/book.obr "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1"
-```
-
-`probe` needs python-chess. To export a Polyglot book:
-
-```
-python tools/obr_tobin.py out/book.obr out/book.bin [--no-red] [--min-games N]
-```
-
-The weight of each move is the score of the side that played it. `--no-red` leaves out moves marked "avoid". `--min-games N` leaves out moves with fewer than N games.
 
 Optional checks: `tools/ctgscan.py book.ctg [max_pages]` parses every page and prints field statistics as JSON. `tools/test_codec.py book.ctg [pages]` checks the position codec round trip.
-
-On the book above, the tree walk took about 80 minutes and the `.obr` file is 2.8 GB.
-
-### C++ converter
-
-[`tools/ctg2obr.cpp`](tools/ctg2obr.cpp) does the three steps above in one program, with no dependencies beyond a C++17 compiler. Its output is identical to the Python pipeline except for the metadata fields `generator` and `created`. On the book above it takes about 4 minutes, against about 97 minutes for the three Python steps.
-
-```
-g++ -O2 -std=c++17 -o ctg2obr tools/ctg2obr.cpp
-./ctg2obr book.ctg book.obr
-python tools/compare_obr.py book.obr out/book.obr   # check against the Python output
-```
 
 ## Programmatic use
 
