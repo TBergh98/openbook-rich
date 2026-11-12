@@ -69,7 +69,7 @@ The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file wi
 
 ### Open the book in Scid Community
 
-[Scid Community](https://github.com/whelanh/scidCommunity), a fork of Scid, reads `.obr` files directly: load the book in the **Book Window** to see games, score, ratings, performance and the coloured moves for every move. No Python is needed. The original Scid does not read `.obr`.
+[Scid Community](https://github.com/whelanh/scidCommunity), a fork of Scid, reads `.obr` files directly: load the book in the **Book Window** to see games, score, ratings, performance and the coloured moves for every move. No Python is needed.
 
 ### Inspect and export
 
