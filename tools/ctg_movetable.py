@@ -172,9 +172,12 @@ MOVETABLE = {
     0xf6: ('K', 1, 0, -2),
     0xf7: ('N', 1, 1, -2),
     0xf8: ('Q', 2, 0, 1),
-    0xf9: ('Q', 2, 6, 0),
+    0xf9: ('Q', 2, 0, 6),  # jja 0.9.1 has (6, 0), a duplicate of 0x1a; verified against ChessBase
     0xfa: ('Q', 2, 0, 3),
     0xfb: ('Q', 2, 2, 2),
     0xfd: ('Q', 1, 7, 0),
     0xfe: ('Q', 2, 3, -3),
 }
+
+# Two codes decoding to the same move would leave another move undecodable.
+assert len({(p, n, f % 8, r % 8) for p, n, f, r in MOVETABLE.values()}) == len(MOVETABLE)
