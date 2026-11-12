@@ -67,9 +67,13 @@ g++ -O2 -std=c++17 -o ctg2obr tools/ctg2obr.cpp
 
 The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file with the same name is read if present. The output is identical to the Python pipeline except for the metadata fields `generator` and `created`. For a book of about 30 million positions the `.obr` file is a few GB.
 
+### Open the book in Scid Community
+
+[Scid Community](https://github.com/whelanh/scidCommunity), a fork of Scid, reads `.obr` files directly: load the book in the **Book Window** to see games, score, ratings, performance and the coloured moves for every move. No Python is needed. The original Scid does not read `.obr`.
+
 ### Inspect and export
 
-These tools need Python 3. `probe` also needs [python-chess](https://github.com/niklasf/python-chess) (`pip install chess`).
+For other programs, which read only Polyglot `.bin` books, export the book with Python. These tools need Python 3. `probe` also needs [python-chess](https://github.com/niklasf/python-chess) (`pip install chess`).
 
 ```
 python tools/obr.py info  book.obr
