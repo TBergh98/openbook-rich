@@ -1,6 +1,6 @@
-# OpenBook Rich: an open chess opening book format and a ChessBase CTG converter
+# OpenBook Rich: an open chess opening book format and a CTG book converter
 
-OpenBook Rich (`.obr`) is an open, documented file format for chess opening books. It stores game statistics, ratings, annotations and recommendations for each position and move, so a ChessBase CTG book can be converted without losing the data that Polyglot `.bin` and Arena `.abk` cannot hold. This repository contains the format specification, a reference reader, an exporter to Polyglot `.bin`, and tools that convert ChessBase CTG books to `.obr`: a fast C++ converter and a Python reference implementation.
+OpenBook Rich (`.obr`) is an open, documented file format for chess opening books. It stores game statistics, ratings, annotations and recommendations for each position and move, so a CTG book can be converted without losing the data that Polyglot `.bin` and Arena `.abk` cannot hold. This repository contains the format specification, a reference reader, an exporter to Polyglot `.bin`, and tools that convert CTG books to `.obr`: a fast C++ converter and a Python reference implementation.
 
 ## Convert and open CTG books without code: Scid Community
 
@@ -144,7 +144,7 @@ The format can be implemented without any GPL code: a reader needs only the spec
 
 ## Disclaimer
 
-- ChessBase, CTG and HIARCS are trademarks of their respective owners. This project is not affiliated with or endorsed by them.
+- ChessBase and CTG are trademarks of their respective owners. This project is not affiliated with or endorsed by them.
 - The CTG tools are provided for interoperability only: reading books you lawfully own with other software.
 - This repository contains no ChessBase code and no content from commercial books.
 - The CTG format was analysed from the public specification, the source code of jja, and the data files of a book the author lawfully owns. No ChessBase or other proprietary program was decompiled, disassembled or otherwise reverse engineered. ChessBase was used only as an end user, to compare displayed results visually.
