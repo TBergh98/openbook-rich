@@ -1,8 +1,17 @@
-# OpenBook Rich
+# OpenBook Rich: an open chess opening book format and a ChessBase CTG converter
 
-OpenBook Rich (`.obr`) is an open, documented file format for chess opening books. It stores game statistics, ratings, annotations and recommendations for each position and move. This repository contains the format specification, a reference reader, an exporter to Polyglot `.bin`, and tools that convert ChessBase CTG books to `.obr`: a fast C++ converter and a Python reference implementation.
+OpenBook Rich (`.obr`) is an open, documented file format for chess opening books. It stores game statistics, ratings, annotations and recommendations for each position and move, so a ChessBase CTG book can be converted without losing the data that Polyglot `.bin` and Arena `.abk` cannot hold. This repository contains the format specification, a reference reader, an exporter to Polyglot `.bin`, and tools that convert ChessBase CTG books to `.obr`: a fast C++ converter and a Python reference implementation.
 
-## Why it exists
+## Convert and open CTG books without code: Scid Community
+
+[Scid Community](https://github.com/whelanh/scidCommunity), a fork of the Scid chess database, includes both the CTG converter and an `.obr` reader. No compiler and no Python are needed:
+
+1. **Tools > Convert CTG to OBR...** converts a `.ctg` book (with its `.cto` and `.ctb` files in the same folder) to `.obr`. The converter is the C++ code from this repository, with the same output.
+2. Load the `.obr` book in the **Book Window** to see games, score, ratings, performance and the coloured moves for every move.
+
+The rest of this README is for converting books from the command line, using `.obr` in other programs, or implementing the format.
+
+## Why not convert CTG to Polyglot or Arena books?
 
 CTG is a proprietary, undocumented format. Existing tools such as [jja](https://git.sr.ht/~alip/jja) can read CTG books and export them to open formats. These formats have no fields for some of the data in a CTG entry:
 
@@ -31,7 +40,7 @@ BrainLearn experience files (`.exp`) store a key, depth, score, move and perform
 - A CC0 specification ([`tools/SPEC.md`](tools/SPEC.md)) and a reference reader that uses only the Python standard library ([`tools/obr.py`](tools/obr.py)).
 - Export to Polyglot `.bin` ([`tools/obr_tobin.py`](tools/obr_tobin.py)) for programs that read only Polyglot books.
 
-## How the converter was built
+## How the CTG converter was built
 
 The CTG data format was studied by analysing book files, using Claude with the [REA: Reverse Engineer Anything](https://github.com/morluto/rea) skill (`reverse-engineer-anything`, by morluto). The public starting points were Steinar H. Gunderson's [CTG specification](https://web.archive.org/web/20210129162445/https://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?tid=2319) and the source code of jja, used as a reference.
 
@@ -50,13 +59,13 @@ The converter was checked on one commercial CTG book (figures in [`results/`](re
 
 Counts, file size and run times depend on the book and the hardware; the figures here are orders of magnitude for that one book on a laptop.
 
-## Quick start
+## Quick start (command line)
 
-Converting a book needs only a C++ compiler. Python is needed only to inspect the result, export it to Polyglot, or run the reference pipeline.
+Converting a book needs only a C++ compiler, or no tools at all in [Scid Community](#convert-and-open-ctg-books-without-code-scid-community). Python is needed only to inspect the result, export it to Polyglot, or run the reference pipeline.
 
 Use the C++ converter: on the book above it took a few minutes, against more than an hour for the Python pipeline, with the same output.
 
-### Convert a CTG book (C++, recommended)
+### Convert a CTG book to .obr (C++, recommended)
 
 [`tools/ctg2obr.cpp`](tools/ctg2obr.cpp) needs only a C++17 compiler (GCC, Clang, or MinGW on Windows).
 
@@ -67,13 +76,9 @@ g++ -O2 -std=c++17 -o ctg2obr tools/ctg2obr.cpp
 
 The `.ctg`, `.cto` and `.ctb` files must be in the same folder. A `.ini` file with the same name is read if present. The output is identical to the Python pipeline except for the metadata fields `generator` and `created`. For a book of about 30 million positions the `.obr` file is a few GB.
 
-### Open the book in Scid Community
+### Inspect a book and export it to Polyglot .bin
 
-[Scid Community](https://github.com/whelanh/scidCommunity), a fork of Scid, reads `.obr` files directly: load the book in the **Book Window** to see games, score, ratings, performance and the coloured moves for every move. No Python is needed.
-
-### Inspect and export
-
-For other programs, which read only Polyglot `.bin` books, export the book with Python. These tools need Python 3. `probe` also needs [python-chess](https://github.com/niklasf/python-chess) (`pip install chess`).
+[Scid Community](#convert-and-open-ctg-books-without-code-scid-community) opens `.obr` files directly. For other programs, which read only Polyglot `.bin` books, export the book with Python. These tools need Python 3. `probe` also needs [python-chess](https://github.com/niklasf/python-chess) (`pip install chess`).
 
 ```
 python tools/obr.py info  book.obr
